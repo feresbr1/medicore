@@ -8,6 +8,7 @@ import DashboardLayout from './layouts/DashboardLayout';
 // Auth Pages
 import Login from './pages/auth/Login';
 import Register from './pages/auth/Register';
+import LandingPage from './pages/LandingPage';
 
 // Dashboard Pages
 import Dashboard from './pages/Dashboard';
@@ -21,6 +22,7 @@ import Settings from './pages/Settings';
 import DentalModule from './pages/DentalModule';
 import AestheticModule from './pages/AestheticModule';
 import VeterinaryModule from './pages/VeterinaryModule';
+import DemoRequests from './pages/DemoRequests';
 
 // Protected Route Component
 const ProtectedRoute = ({ children }) => {
@@ -57,6 +59,7 @@ function App() {
         <Router>
             <Routes>
                 {/* Public Routes */}
+                <Route path="/" element={<LandingPage />} />
                 <Route element={<AuthLayout />}>
                     <Route path="/login" element={<PublicRoute><Login /></PublicRoute>} />
                     <Route path="/register" element={<PublicRoute><Register /></PublicRoute>} />
@@ -75,11 +78,11 @@ function App() {
                     <Route path="/dental" element={<DentalModule />} />
                     <Route path="/aesthetic" element={<AestheticModule />} />
                     <Route path="/veterinary" element={<VeterinaryModule />} />
+                    <Route path="/admin/demo-requests" element={<DemoRequests />} />
                 </Route>
 
                 {/* Default redirect */}
-                <Route path="/" element={<Navigate to="/dashboard" replace />} />
-                <Route path="*" element={<Navigate to="/dashboard" replace />} />
+                <Route path="*" element={<Navigate to="/" replace />} />
             </Routes>
         </Router>
     );
